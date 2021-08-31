@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+CSV.foreach(Rails.root.join('lib/seed_csv/pokemon.csv'), headers: true) do |row|
+  Pokemon.create( {
+                    number: row["#"],
+                    name: row["Name"],
+                    type_1: row["Type 1"],
+                    type_2: row["Type 2"],
+                    total: row["Total"],
+                    hp: row["HP"],
+                    attack: row["Attack"],
+                    defense: row["Defense"],
+                    sp_atk: row["Sp. Atk"],
+                    sp_def: row["Sp. Def"],
+                    speed: row["Speed"],
+                    generation: row["Generation"],
+                    legendary: row["Legendary"]
+                  } )
+end
