@@ -1,5 +1,9 @@
 require 'rails_helper'
 
+# Test suite for the Pokemon model
 RSpec.describe Pokemon, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # Validation tests
+  # ensure columns name and number are present on create before saving
+  it { should validate_presence_of(:name).on(:create) }
+  it { should validate_presence_of(:number).on(:create) }
 end
